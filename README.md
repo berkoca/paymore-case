@@ -45,7 +45,7 @@ The following RESTful API endpoints are available:
 
 The API documentation is available via **Swagger UI**. You can access it by navigating to the following URL in your browser:
 
-- `http://localhost:3000/docs`
+- `http://localhost:4000/docs`
 
 ---
 
