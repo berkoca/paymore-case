@@ -9,8 +9,12 @@ const swaggerDefinition = {
   },
   servers: [
     {
-      url: process.env.SERVER_URI,
-      description: "Test Server",
+      url: "https://paymore-api.berkoca.com/api/v1",
+      description: "Production Server",
+    },
+    {
+      url: "http://localhost:4000/api/v1",
+      description: "Local Test Server",
     },
   ],
 };
