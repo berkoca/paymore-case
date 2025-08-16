@@ -1,0 +1,28 @@
+services:
+  paymore:
+    build: .
+    container_name: paymore
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongodb
+      - mqtt
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb-data:/data/db
+
+  mqtt:
+    image: eclipse-mosquitto:latest
+    container_name: mqtt
+    ports:
+      - "1883:1883"
+    volumes:
+      - "./mosquitto.conf:/mosquitto/config/mosquitto.conf"
+
+volumes:
+  mongodb-data:
