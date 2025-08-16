@@ -3,7 +3,7 @@ services:
     build: .
     container_name: paymore
     ports:
-      - "3000:3000"
+      - "4000:4000"
     depends_on:
       - mongodb
       - mqtt
