@@ -8,8 +8,7 @@ class OrderController {
 
     const newOrder = await orderService.createOrder(request.body);
 
-    return response.json({
-      status: 201,
+    return response.status(201).json({
       data: newOrder,
       message: "Order has been created.",
     });
@@ -21,15 +20,13 @@ class OrderController {
     const order = await orderService.getOrder(request.params.id);
 
     if (!order) {
-      return response.json({
-        status: 404,
+      return response.status(404).json({
         data: null,
         message: `Cannot find the order with id: ${request.params.id}`,
       });
     }
 
     return response.json({
-      status: 200,
       data: order,
       message: "Order fetched.",
     });
@@ -45,7 +42,6 @@ class OrderController {
     const orders = await orderService.getOrders(filter);
 
     return response.json({
-      status: 200,
       data: orders,
       message: "Orders fetched.",
     });
@@ -57,8 +53,7 @@ class OrderController {
     const order = await orderService.getOrder(request.params.id);
 
     if (!order) {
-      return response.json({
-        status: 404,
+      return response.status(404).json({
         data: null,
         message: `Cannot find the order with id: ${request.params.id}`,
       });
@@ -67,7 +62,6 @@ class OrderController {
     await orderService.updateOrderStatus(order.id, request.body.status);
 
     return response.json({
-      status: 200,
       data: null,
       message: "Order has been updated.",
     });
