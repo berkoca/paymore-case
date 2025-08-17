@@ -7,6 +7,8 @@ export interface IOrder extends Document {
   currency: Currency;
   totalPrice: number;
   note?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 const OrderSchema: Schema = new Schema(

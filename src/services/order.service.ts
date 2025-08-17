@@ -29,7 +29,7 @@ class OrderService {
   public async updateOrderStatus(orderId: string, status: OrderStatus) {
     await Order.findOneAndUpdate({ _id: orderId }, { status: status });
 
-    // Send new order status to related mqtt topic
+    // Send new order status to related MQTT topic
     await mqtt.publish(`orders/${orderId}/status`, JSON.stringify({ status }));
   }
 }

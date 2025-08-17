@@ -37,7 +37,26 @@ class OrderController {
 
     const filter: GetOrdersFilter = {};
 
-    if (request.query.status) filter.status = request.query.status as string;
+    if (request.query?.status) filter.status = request.query.status as string;
+
+    if (request.query?.startDate && !request.query?.endDate) {
+      filter.createdAt = {
+        $gte: new Date(request.query.startDate as string).toISOString(),
+      };
+    }
+
+    if (!request.query?.startDate && request.query?.endDate) {
+      filter.createdAt = {
+        $lte: new Date(request.query.endDate as string).toISOString(),
+      };
+    }
+
+    if (request.query?.startDate && request.query?.endDate) {
+      filter.createdAt = {
+        $gte: new Date(request.query.startDate as string).toISOString(),
+        $lte: new Date(request.query.endDate as string).toISOString(),
+      };
+    }
 
     const orders = await orderService.getOrders(filter);
 

@@ -73,10 +73,24 @@ orderRouter.get("/:id", orderController.getOrder);
  *    parameters:
  *      - name: status
  *        in: query
- *        description: status of orders those need to be fetched
+ *        description: Status of orders those need to be fetched
  *        schema:
  *          type: string
  *          enum: [New, Cancelled, Done]
+ *      - name: startDate
+ *        in: query
+ *        description: Start date of orders those need to be fetched
+ *        schema:
+ *          type: string
+ *          format: date
+ *          example: 2025-08-15
+ *      - name: endDate
+ *        in: query
+ *        description: End date of orders those need to be fetched
+ *        schema:
+ *          type: string
+ *          format: date
+ *          example: 2025-08-22
  *    responses:
  *      200:
  *        description: Orders fetched.
